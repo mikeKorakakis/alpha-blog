@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 	before_action :require_same_user, only: [:edit, :update, :delete]
 
 	def index
-		@articles = Article.all#paginate(page: params[:page], per_page: 5)
+		@articles = Article.paginate(page: params[:page], per_page: 5)
 	end
 	def new
 		@article = Article.new
