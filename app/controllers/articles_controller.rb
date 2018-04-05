@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
 		#render plain: params[:article]	
 			
 		@article = Article.new(article_params)
-		@article.user = current_usergit 		
+		@article.user = current_user		
 		if @article.save
 			flash[:success] = "Article was succesfully created"
 			redirect_to article_path(@article)
@@ -50,7 +50,7 @@ private
 		@article = Article.find(params[:id])
 	end
 	def article_params
-		params.require(:article).permit(:title, :description)
+		params.require(:article).permit(:title, :description, category_ids: [])
 	end
 
 	def require_same_user

@@ -16,6 +16,9 @@
 					</div>
 					<% end %>
 			</div>
+			<% if a.categories.any? %>
+				<p>Categories: <%= render a.categories %></p>
+			<% end %>
 			<% if logged_in? && (current_user == a.user || current_user.admin?) %>
 				<div class="article-actions">
 		
